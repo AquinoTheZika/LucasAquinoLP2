@@ -7,54 +7,64 @@ namespace ConsoleApplication1
 {
     class Program
     {
+        struct carro
+        {
+            public int potencia;
+            public int qtd;
+            public string nome;
+            public double km;
+        }
         static void Main(string[] args)
         {
-            int i, qtd, potencia;
-            string nome;
-            double km; 
+            carro automovel;
+            int i;
 
             Console.WriteLine("Informe a quantidade de carros");
-            qtd = Convert.ToInt32(Console.ReadLine());
+            automovel.qtd = Convert.ToInt32(Console.ReadLine());
 
-            for (i = 0; i < qtd; i++)
+            for (i = 0; i < automovel.qtd; i++)
             {
-                 Console.WriteLine("Informe o nome do carro");
-                 nome = Console.ReadLine();
+                Console.WriteLine("Informe o nome do carro");
+                automovel.nome = Console.ReadLine();
 
-	            Console.WriteLine("Informe a quilometragem do carro");
-                km = double.Parse(Console.ReadLine());
-       
-	            Console.WriteLine("Informe a potencia do carro");
-	            potencia = int.Parse(Console.ReadLine());
+                Console.WriteLine("Informe a quilometragem do carro");
+                automovel.km = double.Parse(Console.ReadLine());
 
-                Console.WriteLine(Classificar(nome, km, potencia));
-              
-}
-} //static void main
+                Console.WriteLine("Informe a potencia do carro");
+                automovel.potencia = int.Parse(Console.ReadLine());
 
-        public static string Classificar(string modelo, double km, int pot)
+                Console.WriteLine(Classificar(automovel));
+
+            }
+        } //static void main
+
+        public static string Classificar(carro automovel)
         {
             string T, P;
 
-            if (km <= 5000)
+            if (automovel.km <= 5000)
                 T = "novo";
 
-            else if (km <= 30000)
+            else if (automovel.km <= 30000)
                 T = "seminovo";
 
             else
                 T = "velho";
 
-            if (pot < 120)
+            if (automovel.potencia < 120)
                 P = "popular";
 
-            else if (pot <= 200)
+            else if (automovel.potencia <= 200)
                 P = "forte";
 
             else
                 P = "potente";
 
-            return String.Format("{0} - {1} - {2}", modelo, T, P);
+            return String.Format("{0} - {1} - {2}", automovel.nome, T, P);
+
         }
+
     }
 }
+
+
